@@ -1,20 +1,18 @@
 PODS:
-  - iOSSnapshotTestCase/Core (6.2.0)
-  - OCMock (3.6)
+  - PNDTexture/Core (1.0.0)
+  - PNDTexture/Wrapper (1.0.0):
+    - PNDTexture/Core
 
 DEPENDENCIES:
-  - iOSSnapshotTestCase/Core (~> 6.2)
-  - OCMock (~> 3.6)
+  - PNDTexture/Wrapper (from `Texture.podspec`)
 
-SPEC REPOS:
-  trunk:
-    - iOSSnapshotTestCase
-    - OCMock
+EXTERNAL SOURCES:
+  PNDTexture:
+    :path: Texture.podspec
 
 SPEC CHECKSUMS:
-  iOSSnapshotTestCase: 9ab44cb5aa62b84d31847f40680112e15ec579a6
-  OCMock: 5ea90566be239f179ba766fd9fbae5885040b992
+  PNDTexture: d22452b2c33da7081b389aed97b76083d9c69234
 
-PODFILE CHECKSUM: 1b4ea0e8ab7d94a46b1964a2354686c2e599c8c2
+PODFILE CHECKSUM: ff561b1b0510f6d7ab90694c40c1426457823018
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.11.2
