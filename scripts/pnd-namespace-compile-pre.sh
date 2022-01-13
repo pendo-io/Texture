@@ -15,7 +15,7 @@ function main() {
         set -e
         
         echo " "
-        echo " ▸▸ Running script: Post-pod creation script"
+        echo " ▸▸ Running script: Pre-pod creation script"
         echo " "
         echo " ======================================================================================================= "
         echo " ▸ 01 - Delete generated header if it exists"
@@ -23,7 +23,7 @@ function main() {
         echo " ▸ "
         echo " "
         echo " ======================================================================================================= "
-        echo " ▸ Finished Post-pod creation script"
+        echo " ▸ Finished Pre-pod creation script"
         echo " ======================================================================================================= "
     fi
 }

@@ -10,13 +10,13 @@
 # ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 # This is a helper script to be used when you wish to refresh the Pendo Texture wrapper
 # 1. Start by compiling the Texture product once, so that the script will have a binary to work with.
-# 2. Comment out the "ALREADY_INVOKED_POST=true" line to allow the system to activly run the header generation code.
+# 2. Comment out the "ALREADY_INVOKED_POST=true" line to allow the system to actively run the header generation code.
 # 3. Compile the target again, this will override the content of the generated Namespace header with updated symbols
-# 4. Comment in the "ALREADY_INVOKED_POST=true" line to disable the generations system.
-# 5. Make sure to check that the following importstetment is the first one in the AsyncDisplayKit header file, 
+# 4. Comment in the "ALREADY_INVOKED_POST=true" line to disable the generation system.
+# 5. Make sure to check that the following importstetment is the first one in the AsyncDisplayKit header file,
 #       #import <AsyncDisplayKit/PNDTexture+Namespace.h>
-# 6. Add the stetment if needed, this should be done manualy
-# 7. Make sure the same statement is in the Texture-prefix.pch file, this should be done via podspec menipulation
+# 6. Add the statement if needed, this should be done manually
+# 7. Make sure the same statement is in the Texture-prefix.pch file, this should be done via podspec manipulation
 # ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 function main() {
     
@@ -34,7 +34,7 @@ function main() {
         echo " ▸ 01 - Delete generated header if it exists"
         echo " ======================================================================================================= "
         echo " ▸ "
-        header=$PODS_TARGET_SRCROOT/Source/PND$PRODUCT_NAME+Namespace.h
+        header=$PODS_TARGET_SRCROOT/Source/$PRODUCT_NAME+Namespace.h
         location=$CODESIGNING_FOLDER_PATH
         echo " "
         echo " ======================================================================================================= "
@@ -128,7 +128,7 @@ function generate_header()
     #
 
     echo "// Classes"       >> $HEADER_LOCATION
-    nm $BINARY_PATH -j | sort | uniq | grep "^_OBJC_CLASS_$_"      | grep -v '\$_NS'                   | grep -v '\$_UI'                   | sed -e 's/_OBJC_CLASS_\$_\(.*\)/#ifndef \1\'$'\n''#define \1 __PENDO_NS_SYMBOL(\1)\'$'\n''#endif/g' >> $HEADER_LOCATION
+    nm $BINARY_PATH -j | sort | uniq | grep "^_OBJC_CLASS_$_" | grep -v '\$_NS' | grep -v '\$_UI'  | grep -v '\$_CA' | sed -e 's/_OBJC_CLASS_\$_\(.*\)/#ifndef \1\'$'\n''#define \1 __PENDO_NS_SYMBOL(\1)\'$'\n''#endif/g' >> $HEADER_LOCATION
     echo "// Classes END"   >> $HEADER_LOCATION
     echo ""                 >> $HEADER_LOCATION
     echo "// Functions"     >> $HEADER_LOCATION
@@ -136,8 +136,8 @@ function generate_header()
     echo "// Functions END" >> $HEADER_LOCATION
     echo ""                 >> $HEADER_LOCATION
     echo "// Externs"       >> $HEADER_LOCATION
-    # nm $BINARY_PATH    | sort | uniq | grep ' D ' | cut -d ' ' -f3 | grep -v '\$_NS'                   | grep -v '\$_UI'                   | sed -e 's/_\(.*\)/#ifndef \1\'$'\n''#define \1 __PENDO_NS_SYMBOL(\1)\'$'\n''#endif/g'>> $HEADER_LOCATION
-    # nm $BINARY_PATH    | sort | uniq | grep ' S ' | cut -d ' ' -f3 | grep -v '\$_NS' | grep -v '.eh'   | grep -v '\$_UI' | grep -v 'OBJC_' | sed -e 's/_\(.*\)/#ifndef \1\'$'\n''#define \1 __PENDO_NS_SYMBOL(\1)\'$'\n''#endif/g'>> $HEADER_LOCATION
+    nm $BINARY_PATH    | sort | uniq | grep ' D ' | cut -d ' ' -f3 | grep -v '\$_NS'                   | grep -v '\$_UI'                   | sed -e 's/_\(.*\)/#ifndef \1\'$'\n''#define \1 __PENDO_NS_SYMBOL(\1)\'$'\n''#endif/g'>> $HEADER_LOCATION
+    nm $BINARY_PATH    | sort | uniq | grep ' S ' | cut -d ' ' -f3 | grep -v '\$_NS' | grep -v '.eh'   | grep -v '\$_UI' | grep -v 'OBJC_' | sed -e 's/_\(.*\)/#ifndef \1\'$'\n''#define \1 __PENDO_NS_SYMBOL(\1)\'$'\n''#endif/g'>> $HEADER_LOCATION
     echo "// Externs END"   >> $HEADER_LOCATION
     echo ""                 >> $HEADER_LOCATION
     echo "#endif"           >> $HEADER_LOCATION
