@@ -1,8 +1,3 @@
-source 'https://github.com/CocoaPods/Specs.git'
-workspace 'AsyncDisplayKit.xcworkspace'
-project 'AsyncDisplayKit.xcodeproj'
-project 'ExampleProject/ExampleProject.xcodeproj'
-
 platform :ios, '9.0'
 
 #target :'AsyncDisplayKitTests' do
