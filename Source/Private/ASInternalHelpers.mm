@@ -22,6 +22,8 @@ BOOL ASDefaultAllowsGroupOpacity()
   static BOOL groupOpacity;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
+    CALayer *layer = [[[UIView alloc] init] layer];
+    allowsGroupOpacityFromUIKitOrNil = @(layer.allowsGroupOpacity);
     NSNumber *groupOpacityObj = allowsGroupOpacityFromUIKitOrNil ?: [NSBundle.mainBundle objectForInfoDictionaryKey:@"UIViewGroupOpacity"];
     groupOpacity = groupOpacityObj ? groupOpacityObj.boolValue : YES;
   });
@@ -33,6 +35,8 @@ BOOL ASDefaultAllowsEdgeAntialiasing()
   static BOOL edgeAntialiasing;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
+    CALayer *layer = [[[UIView alloc] init] layer];
+    allowsEdgeAntialiasingFromUIKitOrNil = @(layer.allowsEdgeAntialiasing);
     NSNumber *antialiasingObj = allowsEdgeAntialiasingFromUIKitOrNil ?: [NSBundle.mainBundle objectForInfoDictionaryKey:@"UIViewEdgeAntialiasing"];
     edgeAntialiasing = antialiasingObj ? antialiasingObj.boolValue : NO;
   });
@@ -81,10 +85,6 @@ void ASInitializeFrameworkMainThreadOnDestructor(void)
     // Ensure these values are cached on the main thread before needed in the background.
     if (ASActivateExperimentalFeature(ASExperimentalLayerDefaults)) {
       // Nop. We will gather default values on-demand in ASDefaultAllowsGroupOpacity and ASDefaultAllowsEdgeAntialiasing
-    } else {
-      CALayer *layer = [[[UIView alloc] init] layer];
-      allowsGroupOpacityFromUIKitOrNil = @(layer.allowsGroupOpacity);
-      allowsEdgeAntialiasingFromUIKitOrNil = @(layer.allowsEdgeAntialiasing);
     }
   });
 }
