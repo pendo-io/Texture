@@ -1,6 +1,6 @@
 PODS:
-  - PNDTexture/Core (1.0.0)
-  - PNDTexture/Wrapper (1.0.0):
+  - PNDTexture/Core (3.1.0)
+  - PNDTexture/Wrapper (3.1.0):
     - PNDTexture/Core
 
 DEPENDENCIES:
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: Texture.podspec
 
 SPEC CHECKSUMS:
-  PNDTexture: d22452b2c33da7081b389aed97b76083d9c69234
+  PNDTexture: 7f99434ccde2f0fea48c9b14f2f881da960765f2
 
 PODFILE CHECKSUM: ff561b1b0510f6d7ab90694c40c1426457823018
 

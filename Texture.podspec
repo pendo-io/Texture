@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
     #
     # ==================================================================================================================
     spec.name                  = 'PNDTexture'
-    spec.version               = '1.0.0'
+    spec.version               = '3.1.0'
     spec.summary               = 'A Pendo wrapper to the Texture pod, used to change the namespace.'
     spec.description           = <<-DESC
     A Pendo wrapper to the Texture pod, used to change the namespace.
