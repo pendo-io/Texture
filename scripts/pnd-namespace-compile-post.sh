@@ -135,11 +135,11 @@ function generate_header()
     # nm $BINARY_PATH    | sort | uniq | grep ' T ' | cut -d ' ' -f3 | grep -v '\$_NS'                   | grep -v '\$_UI'                   | sed -e 's/_\(.*\)/#ifndef \1\'$'\n''#define \1 __PENDO_NS_SYMBOL(\1)\'$'\n''#endif/g' >> $HEADER_LOCATION
     echo "// Functions END" >> $HEADER_LOCATION
     echo ""                 >> $HEADER_LOCATION
-    echo "// Externs"       >> $HEADER_LOCATION
-    nm $BINARY_PATH    | sort | uniq | grep ' D ' | cut -d ' ' -f3 | grep -v '\$_NS'                   | grep -v '\$_UI'                   | sed -e 's/_\(.*\)/#ifndef \1\'$'\n''#define \1 __PENDO_NS_SYMBOL(\1)\'$'\n''#endif/g'>> $HEADER_LOCATION
-    nm $BINARY_PATH    | sort | uniq | grep ' S ' | cut -d ' ' -f3 | grep -v '\$_NS' | grep -v '.eh'   | grep -v '\$_UI' | grep -v 'OBJC_' | sed -e 's/_\(.*\)/#ifndef \1\'$'\n''#define \1 __PENDO_NS_SYMBOL(\1)\'$'\n''#endif/g'>> $HEADER_LOCATION
-    echo "// Externs END"   >> $HEADER_LOCATION
-    echo ""                 >> $HEADER_LOCATION
+    # echo "// Externs"       >> $HEADER_LOCATION
+    # nm $BINARY_PATH    | sort | uniq | grep ' D ' | cut -d ' ' -f3 | grep -v '\$_NS'                   | grep -v '\$_UI'                   | sed -e 's/_\(.*\)/#ifndef \1\'$'\n''#define \1 __PENDO_NS_SYMBOL(\1)\'$'\n''#endif/g'>> $HEADER_LOCATION
+    # nm $BINARY_PATH    | sort | uniq | grep ' S ' | cut -d ' ' -f3 | grep -v '\$_NS' | grep -v '.eh'   | grep -v '\$_UI' | grep -v 'OBJC_' | sed -e 's/_\(.*\)/#ifndef \1\'$'\n''#define \1 __PENDO_NS_SYMBOL(\1)\'$'\n''#endif/g'>> $HEADER_LOCATION
+    # echo "// Externs END"   >> $HEADER_LOCATION
+    # echo ""                 >> $HEADER_LOCATION
     echo "#endif"           >> $HEADER_LOCATION
 
     echo " "
