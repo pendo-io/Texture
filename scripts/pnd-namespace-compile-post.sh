@@ -10,13 +10,14 @@
 # ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 # This is a helper script to be used when you wish to refresh the Pendo Texture wrapper
 # 1. Start by compiling the Texture product once, so that the script will have a binary to work with.
-# 2. Comment out the "ALREADY_INVOKED_POST=true" line to allow the system to actively run the header generation code.
-# 3. Compile the target again, this will override the content of the generated Namespace header with updated symbols
-# 4. Comment in the "ALREADY_INVOKED_POST=true" line to disable the generation system.
-# 5. Make sure to check that the following importstetment is the first one in the AsyncDisplayKit header file,
+# 2. Open PNDTexture+Namespace.h file and delete its content
+# 3. Comment out the "ALREADY_INVOKED_POST=true" line to allow the system to actively run the header generation code.
+# 4. Compile the target again, this will override the content of the generated Namespace header with updated symbols
+# 5. Comment in the "ALREADY_INVOKED_POST=true" line to disable the generation system.
+# 6. Make sure to check that the following import statement is the first one in the AsyncDisplayKit header file,
 #       #import <AsyncDisplayKit/PNDTexture+Namespace.h>
-# 6. Add the statement if needed, this should be done manually
-# 7. Make sure the same statement is in the Texture-prefix.pch file, this should be done via podspec manipulation
+# 7. Add the statement if needed, this should be done manually
+# 8. Make sure the same statement is in the Texture-prefix.pch file, this should be done via podspec manipulation
 # ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 function main() {
     
