@@ -19,8 +19,9 @@
 # 7. Add the statement if needed, this should be done manually
 # 8. Make sure the same statement is in the Texture-prefix.pch file, this should be done via podspec manipulation
 # ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
-function main() {
-    
+
+function main()
+{
     ALREADY_INVOKED_POST="true"
     # Stop the script if we already have a prepared framework
     if [[ "true" == ${ALREADY_INVOKED_POST:-false} ]]; then
@@ -49,6 +50,7 @@ function main() {
         echo " ======================================================================================================= "
     fi
 }
+
 # Generate Header
 # ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 function generate_header()
@@ -86,7 +88,6 @@ function generate_header()
 //
 
 // Namespaced Header
-
 #ifndef __PENDO_NAMESPACE_PREFIX_
 #error You must define __PENDO_NAMESPACE_PREFIX_ in your project settings in order to use a Pendo namespace.
 #else
@@ -100,6 +101,15 @@ function generate_header()
 #define __PENDO_NS_SYMBOL(symbol           ) __PENDO_NS_BRIDGE_(__PENDO_NAMESPACE_PREFIX_,symbol)
 #endif
 // MACROS END
+
+// MANUAL FIXES
+#ifndef NSParagraphStyle_ASText
+#define NSParagraphStyle_ASText __PENDO_NS_SYMBOL(NSParagraphStyle_ASText)
+#endif
+#ifndef NSAttributedString_ASText
+#define NSAttributedString_ASText __PENDO_NS_SYMBOL(NSAttributedString_ASText)
+#endif
+// MANUAL FIXES END
     " > $HEADER_LOCATION
 
     # The following one-liner is a bit of a pain in the ass.

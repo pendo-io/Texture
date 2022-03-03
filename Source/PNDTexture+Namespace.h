@@ -16,7 +16,6 @@
 //
 
 // Namespaced Header
-
 #ifndef __PENDO_NAMESPACE_PREFIX_
 #error You must define __PENDO_NAMESPACE_PREFIX_ in your project settings in order to use a Pendo namespace.
 #else
@@ -30,6 +29,15 @@
 #define __PENDO_NS_SYMBOL(symbol           ) __PENDO_NS_BRIDGE_(__PENDO_NAMESPACE_PREFIX_,symbol)
 #endif
 // MACROS END
+
+// MANUAL FIXES
+#ifndef NSParagraphStyle_ASText
+#define NSParagraphStyle_ASText __PENDO_NS_SYMBOL(NSParagraphStyle_ASText)
+#endif
+#ifndef NSAttributedString_ASText
+#define NSAttributedString_ASText __PENDO_NS_SYMBOL(NSAttributedString_ASText)
+#endif
+// MANUAL FIXES END
     
 // Classes
 #ifndef ASAbsoluteLayoutSpec
